@@ -17,6 +17,8 @@ public class ShopsController {
 
     @RequestMapping(method=RequestMethod.GET)
     public @ResponseBody Greeting sayHello(@RequestParam(value="name", required=false, defaultValue="Stranger") String name) {
+    	//Read https://en.wikipedia.org/wiki/Great-circle_distance
+    	//for orthodromic distance
     	//JTS.orthodromicDistance(p1, p2, crs)
     	
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
