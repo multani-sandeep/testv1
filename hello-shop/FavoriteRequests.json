@@ -1,0 +1,17 @@
+﻿[
+   {
+      "name": "POST http://localhost:9000/shops",
+      "method": "POST",
+      "url": "http://localhost:9000/shops",
+      "authuser": null,
+      "authpwd": null,
+      "accept": "application/json",
+      "contenttype": "application/json",
+      "headerarray": [],
+      "data": {
+         "shopName": "test",
+         "shopAddress.number": "testnum",
+         "shopAddress.postcode": "testpost"
+      }
+   }
+]
