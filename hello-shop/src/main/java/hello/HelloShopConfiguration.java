@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HelloWorldConfiguration {
+public class HelloShopConfiguration {
 
     public static void main(String[] args) {
-        SpringApplication.run(HelloWorldConfiguration.class, args);
+        SpringApplication.run(HelloShopConfiguration.class, args);
     }
 
 }
