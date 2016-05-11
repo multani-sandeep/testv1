@@ -1,8 +1,8 @@
 {
   "1.0": {
     "project_path": ":",
-    "project_dir": "/Users/sandeepsingh/Documents/eclipse_mars/shops/hello-shop",
-    "connection_project_dir": "/Users/sandeepsingh/Documents/eclipse_mars/shops/hello-shop",
+    "project_dir": "/Users/sandeepsingh/git/testv1/hello-shop",
+    "connection_project_dir": "/Users/sandeepsingh/git/testv1/hello-shop",
     "connection_gradle_user_home": null,
     "connection_gradle_distribution": "GRADLE_DISTRIBUTION(WRAPPER)",
     "connection_java_home": null,
