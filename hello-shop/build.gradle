@@ -1,3 +1,9 @@
+import groovy.sql.Sql
+
+configurations {
+    sqllite
+}
+
 buildscript {
     repositories {
         mavenCentral()
@@ -25,12 +31,28 @@ repositories {
 }
 
 dependencies {
+	// Added
+	sqllite 'org.xerial:sqlite-jdbc:3.8.9.1'
+	//
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     testCompile("junit:junit")
 }
+//Added
+URLClassLoader loader = GroovyObject.class.classLoader
+configurations.sqllite.each { File file ->
+    loader.addURL(file.toURL())
+}
+Sql sql = Sql.newInstance('jdbc:sqlite:shops.db', "org.sqlite.JDBC")
 
+task checkSql << {
+    sql.execute 'CREATE TABLE TIM(name CHAR(50))'
+    sql.eachRow('SELECT * FROM sqlite_master') { row ->
+        logger.lifecycle row.toString()
+    }
+}
+//
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
