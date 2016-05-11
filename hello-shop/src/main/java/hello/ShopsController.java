@@ -21,6 +21,7 @@ public class ShopsController {
     	//for orthodromic distance
     	//JTS.orthodromicDistance(p1, p2, crs)
     	
+    	
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 
