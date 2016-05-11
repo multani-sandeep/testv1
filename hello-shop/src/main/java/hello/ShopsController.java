@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -21,10 +22,12 @@ import com.google.maps.model.GeocodingResult;
 public class ShopsController {
 
 	private static List<Shop> shops = (List<Shop>) Collections.synchronizedList(new ArrayList<Shop>());
+	@Value("${config.gmaps.apikey}")
+	private String gmapsAPIKey;
 
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<String> addShop(@RequestBody Shop shopData) {
-		GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyDIsygvV5fcTO1lLdiqbsNRC0IJKC7BV6c");
+		GeoApiContext context = new GeoApiContext().setApiKey(gmapsAPIKey);
 		GeocodingResult[] results;
 		try {
 			results = GeocodingApi.geocode(context,
