@@ -29,8 +29,12 @@ public class ShopsController {
 		try {
 			results = GeocodingApi.geocode(context,
 			    shopData.getName()+","+shopData.getNumber()+","+shopData.getPostcode()).await();
+			if(results ==null || results.length<1){
+				return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
+			}
 			shopData.setLatitude(String.valueOf(results[0].geometry.location.lat));
 			shopData.setLongitude(String.valueOf(results[0].geometry.location.lng));
+			System.out.println(shopData.getName() +" "+shopData.getLatitude()+">"+shopData.getLongitude());
 			shops.add(shopData);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -38,7 +42,7 @@ public class ShopsController {
 			return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		return new ResponseEntity<String>(HttpStatus.OK);
+		return new ResponseEntity<String>(HttpStatus.CREATED);
 	}
 
 }
