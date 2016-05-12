@@ -28,7 +28,7 @@ public class ShopController {
 	@Autowired
     private ShopFacade shopFacade;
     
-    @RequestMapping(path = "/shops",method = RequestMethod.POST)
+    @RequestMapping(path = "/shops/add",method = RequestMethod.POST)
     public @ResponseBody ResponseEntity<String> addShop(@RequestBody Shop shopData) {
        
     	HttpStatus httpResult = HttpStatus.CREATED;
