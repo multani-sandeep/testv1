@@ -23,13 +23,12 @@ import com.google.maps.model.GeocodingResult;
 import com.vividsolutions.jts.geom.Coordinate;
 
 @Controller
-@RequestMapping("/shops")
 public class ShopController {
 
 	@Autowired
     private ShopFacade shopFacade;
     
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(path = "/shops",method = RequestMethod.POST)
     public @ResponseBody ResponseEntity<String> addShop(@RequestBody Shop shopData) {
        
     	HttpStatus httpResult = HttpStatus.CREATED;
@@ -54,7 +53,7 @@ public class ShopController {
      * @return
      */
    
-    @RequestMapping(method= RequestMethod.GET )
+    @RequestMapping(path = "/shops",method= RequestMethod.GET )
     public ResponseEntity<List<Shop>> shopLocator(@RequestParam(value="latitude") String latitude, @RequestParam(value="longitude") String longitude){
        List<Shop> shops = shopFacade.findClosestShop(latitude, longitude);
        if(shops.size()==0){
